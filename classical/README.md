@@ -1,6 +1,9 @@
-# Classical (complexity theory)
+# Classical complexity theory
 
-This folder contains the core complexity-theory backbone:
-- definitions (P, NP, NP-complete)
-- what “progress” means for P vs NP (proof-level vs empirical)
-- known proof barriers and what they rule out
+Reading order:
+1) `what_p_vs_np_requires.md`
+2) `known_barriers.md`
+3) `lower_bounds_survey.md`
+4) `historical_notes.md`
+
+Design principle: keep each note independently readable, but consistent in definitions and citation keys.
