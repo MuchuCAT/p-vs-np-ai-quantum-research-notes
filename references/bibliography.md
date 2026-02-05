@@ -59,3 +59,8 @@ Citation keys are stable tags like `[BGS75]`.
 - **[dM15]** Leonardo de Moura et al. “The Lean Theorem Prover (System Description).” In: *CADE-25*, LNCS 9195, 2015. DOI: 10.1007/978-3-319-21401-6_26.
 - **[Hal17]** Thomas C. Hales et al. “A Formal Proof of the Kepler Conjecture.” *Forum of Mathematics, Pi* 5, 2017. DOI: 10.1017/fmp.2017.1.
 - **[Gon13]** Georges Gonthier et al. “A Machine-Checked Proof of the Odd Order Theorem.” In: *ITP 2013*, LNCS 7998, 2013. DOI: 10.1007/978-3-642-39634-2_14.
+- ---
+
+## 8) Official statements / meta
+- **[CMI00]** Clay Mathematics Institute. **P vs NP (Millennium Prize Problems).** Official institute webpage. (Accessed 2026-02-05).
+
