@@ -1,92 +1,108 @@
 # What P vs NP requires (and what it does not)
 
 ## Scope
-This note focuses on:
+This note explains:
 - what the P vs NP question formally asks
-- what would count as progress (proof-level progress)
-- why “solving many instances” is not the same as proving a separation
-- the main known barriers that shape what kinds of techniques are likely insufficient
+- what would count as *proof-level* progress
+- why empirical success (solvers, heuristics, benchmarks) is not a separation proof
+- how lower bounds and proof barriers enter the story
 
-## Non-goals
-- presenting a proof sketch
-- surveying every subfield related to P vs NP
-- discussing practical SAT solving performance beyond illustrating the proof/empirical gap
+Non-goals:
+- proposing a proof strategy
+- surveying all of complexity theory
 
----
+References use keys like `[Sip12]`. See `../references/bibliography.md`.
 
-## 1) The question, stated precisely
-P vs NP asks whether every decision problem whose solutions can be verified in polynomial time
-(NP) can also be solved in polynomial time (P).
+## 1) Minimal formal statement
 
-A key point: this is a statement about *all input sizes* and *worst-case* complexity.
+P and NP are classes of *decision problems* (languages) defined by resource bounds.
 
----
+- **P**: problems decidable by a deterministic Turing machine in polynomial time. `[Sip12]`
+- **NP**: problems whose *yes* instances have polynomial-size certificates verifiable in polynomial time. Equivalent: decidable by a nondeterministic Turing machine in polynomial time. `[Sip12]`
 
-## 2) What counts as progress?
-Progress on P vs NP typically means one of the following:
+**P vs NP** asks whether these classes are equal:
+- either **P = NP** (every efficiently verifiable problem is efficiently solvable),
+- or **P ≠ NP** (verification can be strictly easier than finding). `[Sip12]`
 
-1) A proof that P = NP:
-   - e.g. an explicit polynomial-time algorithm for an NP-complete problem (like SAT),
-     with a proof of correctness and polynomial running time.
+## 2) NP-completeness and why SAT is central
 
-2) A proof that P ≠ NP:
-   - e.g. a super-polynomial lower bound that rules out *all* polynomial-time algorithms
-     for NP-complete problems (often framed via circuit lower bounds or related models).
+A problem is **NP-complete** if:
+1) it is in NP, and
+2) every problem in NP reduces to it via a polynomial-time many-one reduction. `[Coo71] [Kar72] [GJ79]`
 
-Importantly, empirical success on many instances is not proof-level progress.
+Cook showed SAT is NP-complete (Cook–Levin theorem). `[Coo71]`
+Karp showed many combinatorial problems are NP-complete via reductions. `[Kar72]`
 
----
+A standard consequence:
+- If any NP-complete problem is in P, then **P = NP**. `[GJ79]`
+- If one proves an NP-complete problem is not in P, then **P ≠ NP** (but proving this is exactly the hard part). `[AB09]`
 
-## 3) Verification vs finding
-It is easy to confuse:
-- verifying a given solution (polynomial)
-with
-- finding a solution (unknown in general)
+## 3) What counts as “progress” on P vs NP
 
-P vs NP is exactly about whether this gap is real in the worst case.
+A result “about” P vs NP is not necessarily progress *on* P vs NP.
 
----
+### 3.1 Proof-level progress
+Typical proof-level progress would look like one of the following:
 
-## 4) Why “heuristics solve hard instances” is not a solution
-Modern solvers can solve large real-world instances (SAT, scheduling, etc.).
-This demonstrates:
-- structure in many practical distributions
-- strong engineering and heuristics
+**(A) Prove P = NP**
+- Give a polynomial-time algorithm for an NP-complete problem (e.g., SAT),
+- Prove correctness,
+- Prove a polynomial runtime bound in an accepted model. `[Sip12] [AB09]`
 
-It does *not* establish:
-- a polynomial-time algorithm for all instances
-- a proof of separation between complexity classes
+**(B) Prove P ≠ NP**
+- Prove a super-polynomial lower bound excluding *all* polynomial-time algorithms for an NP-complete problem.
+In practice this is often approached via **circuit lower bounds** or related models. `[AB09]`
 
----
+### 3.2 What is not proof-level progress
+- “We solved many benchmark SAT instances quickly.”
+- “A heuristic works well on real distributions.”
+- “A model predicts solutions with high accuracy.”
+These are meaningful engineering achievements, but they do not establish a worst-case class separation. `[For09]`
 
-## 5) Known proof barriers (why the problem resists standard techniques)
+## 4) Worst-case vs average-case, and why the distinction matters
 
-### 5.1 Relativization (Baker–Gill–Solovay)
-There exist oracles relative to which P = NP, and oracles relative to which P ≠ NP.
-This suggests that proof techniques that “relativize” are insufficient to resolve P vs NP.
+P vs NP is a **worst-case** statement.
+A polynomial-time algorithm must work on **all** instances of size n (up to polynomial factors), not merely on typical or structured instances. `[Sip12]`
 
-### 5.2 Natural proofs (Razborov–Rudich)
-A broad family of circuit lower bound techniques (captured by “natural proofs”)
-would, under standard cryptographic assumptions, also break pseudorandomness.
-This implies that a large class of “combinatorial” lower bound strategies is unlikely to work.
+This is why:
+- strong performance on industrial instances does not directly imply P = NP,
+- hardness in cryptography is not “settled” by P vs NP alone (it depends on specific assumptions),
+- distributions and heuristics matter in practice but are not the same object as a class separation. `[AB09] [For09]`
 
-### 5.3 Algebrization (Aaronson–Wigderson)
-Even some non-relativizing techniques still “algebrize”.
-Algebrization extends the barrier landscape and suggests that resolving P vs NP
-requires techniques that are neither relativizing, nor natural, nor algebrizing.
+## 5) Why lower bounds show up immediately
 
----
+One widely studied route to P ≠ NP is via **nonuniform computation** (circuits):
+- If SAT requires super-polynomial size circuits, that implies **P ≠ NP**. `[AB09]`
+- Conversely, if NP ⊆ P/poly, major collapses follow (Karp–Lipton). `[KL82]`
 
-## 6) What this implies (high-level)
-Any credible attack on P vs NP must be clear about:
-- whether it relativizes
-- whether it looks “natural”
-- whether it algebrizes
+However, proving strong lower bounds for general circuits remains out of reach.
+We do have strong lower bounds for *restricted* circuit classes (AC0, ACC0, monotone circuits), which is evidence of difficulty rather than a resolution. `[FSS84] [Has86] [Wil11]`
 
-This does not prove impossibility of a solution,
-but it explains why many naive narratives do not meet the proof bar.
+## 6) The three barrier results (why naive techniques fail)
 
----
+A key part of the modern understanding is that large families of proof techniques are known to be insufficient.
 
-## References (short list)
-See ../references/bibliography.md
+- **Relativization**: there exist oracles A such that P^A = NP^A and oracles B such that P^B ≠ NP^B. Many diagonalization-style arguments “relativize,” so they cannot settle P vs NP. `[BGS75]`
+- **Natural proofs**: under standard cryptographic assumptions, a broad class of combinatorial circuit lower bound techniques would break pseudorandomness, suggesting those techniques cannot prove strong lower bounds. `[RR94]`
+- **Algebrization**: even some non-relativizing techniques still fail in “algebraic oracle” worlds, extending the barrier landscape. `[AW09]`
+
+This does not prove P vs NP is unresolvable.
+It means that a credible proof must be explicit about whether it avoids these barrier patterns. `[AB09] [AW09]`
+
+(See `known_barriers.md` for a careful treatment.)
+
+## 7) What this note commits to (reader contract)
+
+You should be able to quote the following as safe claims:
+
+- P vs NP is a worst-case statement about class equality/separation. `[Sip12]`
+- SAT is NP-complete and central via reductions. `[Coo71] [Kar72]`
+- Relativization, natural proofs, and algebrization are formal barriers for broad technique families. `[BGS75] [RR94] [AW09]`
+- Strong general circuit lower bounds remain unknown; restricted-model lower bounds exist. `[Has86] [Wil11]`
+
+## Pointers
+- Barriers: `known_barriers.md`
+- Lower bounds survey: `lower_bounds_survey.md`
+- Quantum perspective: `../quantum/quantum_and_PvNP.md`
+- AI perspective: `../AI/limitations_of_AI.md`
+
