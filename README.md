@@ -1,29 +1,38 @@
-# p-vs-np-ai-quantum-research-notes
-A structured research dossier on P vs NP and why current AI and quantum approaches do not meet the proof bar.
+# P vs NP — proof barriers, and limits of AI and quantum narratives
 
-# P vs NP — research notes on proof barriers, AI limits, and quantum limits
+This repository is a conservative research dossier about the P vs NP problem.
 
-This repository is a structured research dossier about the P vs NP problem.
+The goal is not to propose a proof.
+The goal is to clarify the *proof bar*:
+- what would count as progress on P vs NP (proof-level progress)
+- why three barrier results (relativization, natural proofs, algebrization) constrain many approaches
+- why common AI/LLM and quantum-computing narratives do not meet that bar (today)
 
-The intent is conservative:
-- clarify what would count as “progress” on P vs NP (proof-level progress)
-- summarize known proof barriers (relativization, natural proofs, algebrization)
-- explain why common AI/LLM narratives and quantum narratives do not meet that bar
-- keep references stable and academic
+## How to read
+1) `classical/what_p_vs_np_requires.md` (core note)
+2) `classical/known_barriers.md` (the three barriers, audit-friendly)
+3) `quantum/quantum_and_PvNP.md` (what quantum changes / does not change)
+4) `AI/limitations_of_AI.md` (AI assistance vs proof artifacts)
+5) `references/bibliography.md` (curated, high-authority references)
 
-Non-goals:
-- proposing a proof
-- claiming breakthrough results
-- speculating beyond what sources support
+## Scope and non-goals
+**In scope**
+- standard definitions (P, NP, NP-complete, reductions)
+- proof barriers and what they rule out
+- selected lower-bound results for restricted circuit classes
+- conservative discussion of AI tools for formalization and theorem proving
+- conservative discussion of quantum complexity (BQP, oracle evidence)
 
-## Structure
-- classical/what_p_vs_np_requires.md — the core note (definitions + what the problem requires)
-- AI/limitations_of_AI.md — why current AI methods do not directly address the proof requirement
-- quantum/quantum_and_PvNP.md — what quantum computing changes (and what it does not)
-- references/bibliography.md — authoritative sources (textbooks, surveys, core papers)
+**Out of scope**
+- proof sketches for P = NP or P ≠ NP
+- claims of breakthroughs
+- speculative “future AI will solve it” narratives
+
+## Citation style
+In-text citations use stable keys like `[BGS75]`. See `references/bibliography.md`.
 
 ## Status
-Draft notes, iterated slowly. I prefer small commits and explicit scope.
+This is an evolving dossier. I prefer small commits and explicit scope.
 
 ## License
 Apache-2.0
