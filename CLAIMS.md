@@ -1,0 +1,26 @@
+- P is the class of languages decidable by a deterministic Turing machine in polynomial time. -> [Sip13,AB09] -> classical/what_p_vs_np_requires.md#definitions
+- NP is the class of languages whose YES instances have polynomial-size certificates verifiable in polynomial time. -> [Sip13,AB09] -> classical/what_p_vs_np_requires.md#definitions
+- SAT was shown NP-complete in Cook’s 1971 paper, establishing the modern NP-completeness framework. -> [Coo71] -> classical/what_p_vs_np_requires.md#np-completeness
+- Karp (1972) introduced polynomial-time many-one reductions and exhibited many NP-complete problems. -> [Kar72] -> classical/what_p_vs_np_requires.md#np-completeness
+- If any NP-complete language is in P, then P = NP (closure of reductions). -> [GJ79,Sip13] -> classical/what_p_vs_np_requires.md#what-counts-as-progress
+- The P vs NP question is a worst-case asymptotic statement, not a claim about practical instances. -> [For09,AB09] -> classical/what_p_vs_np_requires.md#what-counts-as-progress
+- Baker–Gill–Solovay constructed oracles A,B such that P^A = NP^A while P^B ≠ NP^B. -> [BGS75] -> classical/known_barriers.md#relativization
+- The oracle results of Baker–Gill–Solovay imply that any proof technique that relativizes cannot resolve P vs NP. -> [BGS75] -> classical/known_barriers.md#relativization
+- Razborov–Rudich defined the “natural proofs” framework for circuit lower bounds and proved a barrier under standard cryptographic assumptions. -> [RR94] -> classical/known_barriers.md#natural-proofs
+- The natural proofs barrier explains why many combinatorial lower-bound strategies are unlikely to separate P from NP (under those assumptions). -> [RR94] -> classical/known_barriers.md#natural-proofs
+- Aaronson–Wigderson introduced algebrization and showed it blocks several approaches beyond relativization. -> [AW08] -> classical/known_barriers.md#algebrization
+- Algebrization is a refinement of the barrier landscape: some non-relativizing techniques still “algebrize.” -> [AW08] -> classical/known_barriers.md#algebrization
+- Strong lower bounds for general circuits remain unknown; most progress is for restricted circuit classes. -> [AB09,For09] -> classical/lower_bounds_survey.md#overview
+- Razborov (1985) proved superpolynomial lower bounds for monotone circuits for certain Boolean functions (e.g., clique-related formulations). -> [Raz85] -> classical/lower_bounds_survey.md#monotone-circuits
+- Håstad (1986) proved nearly optimal lower bounds for constant-depth (AC^0) circuits, including exponential size for parity. -> [Has86] -> classical/lower_bounds_survey.md#ac0
+- Williams (2011) proved NEXP is not contained in ACC^0, a major nonuniform circuit lower bound for a restricted class. -> [Wil11] -> classical/lower_bounds_survey.md#acc0
+- Cook–Reckhow (1979) defined propositional proof systems and connected proof length to complexity-theoretic questions. -> [CR79] -> classical/what_p_vs_np_requires.md#proof-complexity
+- Formally verified mathematics relies on proof assistants producing checkable proof artifacts. -> [AvH14] -> AI/limitations_of_AI.md#proof-artifacts
+- Claims about P vs NP require checkable proof artifacts (formal or informal), not empirical solver performance. -> [For09,AvH14] -> AI/limitations_of_AI.md#proof-vs-empirical
+- AI systems can assist with formalization and verification workflows, but assistance is distinct from a proof of class separation. -> [AvH14] -> AI/limitations_of_AI.md#where-ai-helps
+- Bernstein–Vazirani (1997) developed the foundations of quantum complexity theory and the class BQP. -> [BV97] -> quantum/quantum_and_PvNP.md#bqp
+- Shor (1997) gave polynomial-time quantum algorithms for factoring and discrete logarithms. -> [Sho97] -> quantum/quantum_and_PvNP.md#shor
+- Grover (1997) gave a generic quadratic speedup for unstructured search, reducing O(N) queries to O(sqrt(N)). -> [Gro97] -> quantum/quantum_and_PvNP.md#grover
+- Applying Grover search to brute-force NP search yields at best a quadratic speedup over exhaustive search, which remains exponential in input size. -> [Gro97] -> quantum/quantum_and_PvNP.md#grover
+- The statement “P vs NP is a Millennium Prize Problem with a $1M award” requires an official reference entry in the bibliography. -> [MISSING_REF] -> classical/historical_notes.md#millennium-prize (Clay Mathematics Institute webpage, 2000, Millennium Prize Problems)
+- The statement “Grover’s speedup is optimal in the black-box model” requires a canonical lower-bound citation entry in the bibliography. -> [MISSING_REF] -> quantum/quantum_and_PvNP.md#grover (Bennett, Bernstein, Brassard, Vazirani, 1997, SIAM J. Comput.)
