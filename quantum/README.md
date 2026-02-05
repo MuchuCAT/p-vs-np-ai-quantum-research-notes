@@ -1,4 +1,6 @@
 # Quantum and P vs NP
 
-This folder focuses on what quantum computing changes in complexity terms,
-and why common “quantum solves NP-complete” narratives do not follow from known results.
+This folder documents what quantum computing changes in complexity-theoretic terms,
+and why “quantum solves NP-complete” does not follow from known results.
+
+Main note: `quantum_and_PvNP.md`
